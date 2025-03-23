@@ -217,16 +217,17 @@ function getWeekNumberByDate(date) {
  */
 function getNextFridayThe13th(date) {
   const current = new Date(date);
-
-  while (true) {
+  let hasFound = false;
+  while (!hasFound) {
     current.setDate(13);
 
     if (current.getDay() === 5 && current >= date) {
+      hasFound = true;
       return current;
     }
-
     current.setMonth(current.getMonth() + 1);
   }
+  return current;
 }
 
 /**
